@@ -51,6 +51,10 @@ In the integration, you supply the transfer message in the **Message to User** f
 
 If you're sending one or more text responses prior to the transfer, it's recommended that you add to the Integration interaction an interaction delay that accounts for each response you need to send. This gives the bot sufficient time to send the messages before transferring the conversation. For example, if you're sending 3 text messages prior to the transfer, you might add a 6000 millisecond delay to the Integration interaction (3 messages x 2000 millisecond delay per message = an aggregate 6000 millisecond delay). Specify the delay in the **Interaction Delay** field in the Integration interaction's settings.
 
+#### Override max 320 character limit in text response if needed
+
+If you're sending more than one text responses prior to the transfer and the interaction delay is not a suitable solution and you do not wish to shorten the text response to one response, you can overide the max 320 character limit by using the setAllowMaxTextResponse function so that all text is within a single message. More details can be found at https://developers.liveperson.com/conversation-builder-scripting-functions-manage-conversation-flow.html#set-allow-max-text-response.
+
 #### Handle transfer failures
 
 First, if an immediate error occurs when calling the escalation API, a failure response will be returned. You can catch and handle these errors by adding a custom rule to the integration interaction that checks for a “failure” result. For more on this, see [here](conversation-builder-interactions-integrations.html#integration-interactions).
